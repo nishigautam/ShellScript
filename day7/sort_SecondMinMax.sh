@@ -1,30 +1,22 @@
 #! /bin/bash
 
-num=10
-count=1
-while [ $count -le $num ]
+declare -A arr
+
+for (( i=0 ; i < 10 ; i++ ))
 do
-	arr[$count]=$(((RANDOM%900)+100))
-	count=$((count+1))
+	checkNumber=$(((RANDOM%900)+100))
+	arr[$i]=$checkNumber
 done
 
-echo "${arr[@]}"
 
-temp=0
+second_max=$(printf '%s\n' "${arr[@]}" | sort -n | tail -2 | head -1)
+second_min=$(printf '%s\n' "${arr[@]}" | sort -r | tail -2 | head -1)
 
-for ((i = 0; i<5; i++))
-do
+echo "Values:" ${arr[*]}
+echo "Key:" ${!arr[@]}
+echo "Second Maximum Element:" $second_max
+echo "Second Minimum Element:" $second_min
 
-    for((j =i-1 ; j<10-i-1; j++))
-    do
-        if [ ${arr[j]} > ${arr[$((j+1))]} ]
-        then
-            # swap
-            temp=${arr[j]}
-            arr[$j]=${arr[$((j+1))]}
-            arr[$((j+1))]=$temp
-        fi
-    done
-done
-echo "Array Sorted :"
-echo ${arr[@]}
+
+
+
