@@ -2,7 +2,7 @@
 
 max=0
 min=10000
-for(( i=0 ; i<=4 ; i++ ))
+for(( i=0 ; i<5 ; i++ ))
 do
         num=$(((RANDOM%900)+100))
         echo $num
