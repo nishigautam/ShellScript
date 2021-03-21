@@ -1,8 +1,14 @@
 #! /bin/bash
 
 echo "Enter Number :"
-read n
+read num
 
-pow= `expr = pow(2,n)`
+power=$((2*$num))
 
-echo $n
+if [ $num -ge 1 ]
+then
+	for (( i=1 ; i <= $num ; i++ ))
+	do
+		echo $((2**i))
+	done
+fi
